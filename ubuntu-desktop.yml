@@ -1,0 +1,22 @@
+
+---
+
+    - name: Ubuntu desktop environment playbook
+      hosts: localhost
+      become: true
+      roles:
+        # Common
+        # - { role: cleanup}
+        - { role: common}
+        # - { role: dotfiles}
+        # - { role: ssh}
+        # Development
+        # - { role: git}
+        - { role: ide}
+        - { role: docker}
+        # - { role: python}
+        # - { role: java}
+        # Others
+        - { role: spotify}
+        - { role: keepassxc}
+        # - { role: anki}

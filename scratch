@@ -1,0 +1,12 @@
+TODO: add these features from sample project
+Fail2ban, research,sample
+locales, see sample
+LibreOffice, see sample
+ssh, sample
+projects-installer
+nautilus-plugins
+java-openjdk
+dotfiles
+
+python: install manually first (pyenv, python tooling), steps as scripts
+- once dotfiles figured out, then update python w/ PATHing
