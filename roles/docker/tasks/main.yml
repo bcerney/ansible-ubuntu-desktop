@@ -39,6 +39,12 @@
     
     - name: Add current user to Docker group
       user: name="{{ ansible_env.USER }}" groups=docker append=yes
+
+    - name: Add user to Docker group
+      user: name=bgdgbc groups=docker append=yes
+
+    - name: Run newgroup
+      shell: newgrp docker
     
-    - name: "Ensure Docker is started"
-      service: name=docker state=restarted enabled=no
+    - name: Ensure Docker is restarted
+      service: name=docker state=restarted enabled=yes
