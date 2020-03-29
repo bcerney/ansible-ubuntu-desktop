@@ -19,4 +19,4 @@
         # Others
         - { role: spotify }
         - { role: keepassxc }
-        # - { role: anki}
+        - { role: anki }

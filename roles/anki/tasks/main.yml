@@ -1,1 +1,37 @@
-https://apps.ankiweb.net/
+
+---
+# https://apps.ankiweb.net/
+
+  - name: Install Anki package
+    apt: pkg=anki state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+
+  # TODO: dynamic version, checksum?, move to proper module like uri_of?
+  # - name: Download Anki .tar
+  #   shell: "curl https://github.com/ankitects/anki/releases/download/2.1.22/anki-2.1.22-linux-amd64.tar.bz2"
+
+  # - name: Download Anki .tar
+  #   get_url: 
+  #     url: https://github.com/ankitects/anki/releases/download/2.1.22/anki-2.1.22-linux-amd64.tar.bz2
+  #     dest: /home/bgdgbc/Downloads
+
+  # - name: Extract Anki .tar
+  #   unarchive:
+  #     src: /home/bgdgbc/Downloads/anki-2.1.22-linux-amd64.tar.bz2
+  #     dest: /home/bgdgbc/Downloads
+  #     owner: bgdgbc
+  #     # creates: /home/bgdgbc/Downloads/anki-2.1.22-linux-amd64
+  #     remote_src: yes
+  #     extra_opts:
+  #     - xjf
+  # - name: Extract Anki .tar
+  #   shell: "tar xjf /home/bgdgbc/Downloads/anki-2.1.22-linux-amd64.tar.bz2"
+
+
+  # - name: Run make install
+  #   make:
+  #     chdir: /home/bgdgbc/Downloads/anki-2.1.22-linux-amd64
+  #     target: install
+    
+#     $ tar xjf Downloads/anki-2.1.22-amd64.tar.bz2
+# $ cd anki-2.1.22-linux-amd64
+# $ sudo make install
