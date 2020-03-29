@@ -1,6 +1,6 @@
 
 ---
-    - name: Install dependencies
+    - name: Install VS Code dependencies
       apt:
         name:
           - gconf2
@@ -9,7 +9,7 @@
           - libxss1
         state: present
     
-    - name: Install key
+    - name: Install VS Code key
       apt_key:
         url: 'https://packages.microsoft.com/keys/microsoft.asc'
         state: present

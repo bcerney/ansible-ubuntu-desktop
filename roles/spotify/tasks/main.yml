@@ -3,8 +3,12 @@
     # https://github.com/lvancrayelynghe/ansible-ubuntu/blob/master/roles/spotify/tasks/main.yml
 
     # TODO: probably a better way to get the key, research
-    - name: Add apt keys of spotify
-      apt_key: keyserver=keyserver.ubuntu.com id=BBEBDCB318AD50EC6865090613B00F1FD2C19886
+    # - name: Add apt keys of spotify
+    #   apt_key: keyserver=keyserver.ubuntu.com id=BBEBDCB318AD50EC6865090613B00F1FD2C19886
+    - name: Install key
+      apt_key:
+        url: 'https://download.spotify.com/debian/pubkey.gpg'
+        state: present
     
     - name: Add repository
       apt_repository: repo="deb http://repository.spotify.com stable non-free"

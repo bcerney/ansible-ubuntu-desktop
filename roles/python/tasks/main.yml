@@ -1,0 +1,80 @@
+---
+
+    # https://github.com/dirn/ansible-pyenv
+    - name: Install Python packages
+      apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+      with_items:
+        - python
+        - python-dev
+        - python-pip
+
+    # TODO: consolidate packages
+    - name: Install pyenv requirements
+      apt: pkg={{ item }} state=present
+      with_items:
+        - make
+        - build-essential
+        - libssl-dev
+        - zlib1g-dev
+        - libbz2-dev
+        - libreadline-dev
+        - libsqlite3-dev
+        - wget
+        - curl
+        - llvm
+    
+    - name: Install pyenv
+      git: repo=https://github.com/yyuu/pyenv.git dest={{ pyenv_root }}
+    
+    - name: Install pyenv-virtualenv
+      git: repo=https://github.com/yyuu/{{ item }}.git dest={{ pyenv_root }}/plugins/{{ item }}
+      with_items:
+        - pyenv-virtualenv
+        - pyenv-virtualenvwrapper
+      when: pyenv_virtualenv
+
+    # TODO: 
+    # - name: Install versions
+    #   command: creates={{ pyenv_root }}/versions/{{ item }} pyenv install {{ item }}
+    #   with_items: pyenv_versions
+      
+    #   - include: versions.yml
+    #     versions: "{{ pyenv_default_versions }}"
+    #     dest: "{{ pyenv_root }}/version"
+      
+    #   - include: versions.yml
+    #     versions: "{{ pyenv_project_versions }}"
+    #     dest: "{{ pyenv_project_root }}/.python-version"
+      
+    - name: Add to run commands
+      lineinfile: >
+        dest={{ pyenv_runcom }}
+        state=present
+        create=yes
+        line="{{ item }}"
+      with_items:
+        - if which pyenv > /dev/null; then
+        - "    export PYENV_ROOT=\\\"$HOME/.pyenv\\\""
+        - "    export PATH=\\\"$PYENV_ROOT/bin:$PATH\\\""
+        - "    eval \\\"$(pyenv init -)\\\""
+        - "fi # pyenv"
+      
+    - name: Add virtualenv to run commands
+      lineinfile: >
+        dest={{ pyenv_runcom }}
+        state=present
+        create=yes
+        insertbefore="fi # pyenv"
+        line="    pyenv virtualenvwrapper_lazy"
+      when: pyenv_virtualenv
+      
+    - name: Configure virtualenvwrapper
+      lineinfile: >
+        dest={{ pyenv_runcom }}
+        state=present
+        create=yes
+        line="{{ item }}"
+      with_items:
+        - export WORKON_HOME=\"$HOME/.virtualenvs\"
+        - export PROJECT_HOME=\"$HOME/development\"
+      when: pyenv_virtualenv and pyenv_runcom

@@ -7,14 +7,14 @@
       roles:
         # Common
         # - { role: cleanup}
-        - { role: common}
+        - common
         # - { role: dotfiles}
         # - { role: ssh}
         # Development
         # - { role: git}
         - { role: ide}
         - { role: docker}
-        # - { role: python}
+        - { role: python}
         # - { role: java}
         # Others
         - { role: spotify}
