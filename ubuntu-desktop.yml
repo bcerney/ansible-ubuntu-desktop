@@ -12,11 +12,11 @@
         # - { role: ssh}
         # Development
         # - { role: git}
-        # - { role: ide }
-        - { role: docker }
+        - { role: ide }
+          # - { role: docker }
         # - { role: python}
         # - { role: java}
         # Others
-        # - { role: spotify }
-        # - { role: keepassxc }
-        # - { role: anki }
+        - { role: spotify }
+        - { role: keepassxc }
+        - { role: anki }
