@@ -1,0 +1,12 @@
+
+---
+
+    - name: Install nordvpn repo
+      apt:
+        deb: https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn-release_1.0.0_all.deb
+
+    - name: Install nordvpn
+      apt: pkg=nordvpn state=latest update_cache=yes
+
+    # TODO: explore command line options
+  
