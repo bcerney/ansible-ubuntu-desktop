@@ -16,7 +16,11 @@
           # - { role: docker }
         # - { role: python}
         # - { role: java}
+        # Cloud Storage
+        - { role: nextcloud }
+        - { role: mega }
         # Others
+        - { role: nordvpn }
         - { role: spotify }
         - { role: keepassxc }
         - { role: anki }

@@ -1,0 +1,11 @@
+
+---
+
+
+    - name: Add NextCloud PPA repository
+      apt_repository: repo="ppa:nextcloud-devs/client" state=present
+
+    - name: Install nextcloud-client
+      apt: pkg=nextcloud-client state=latest update_cache=yes
+
+    # TODO: use cmdline to login to server, explore options

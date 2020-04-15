@@ -1,0 +1,17 @@
+
+---
+
+
+    # - name: Add NextCloud PPA repository
+    #   apt_repository: repo="ppa:nextcloud-devs/client" state=present
+
+    - name: Install megasync-client
+      apt:
+        deb: https://mega.nz/linux/MEGAsync/xUbuntu_18.04/amd64/megasync-xUbuntu_18.04_amd64.deb
+      
+    - name: Install nautilus-megasync integration
+      apt: 
+        deb: https://mega.nz/linux/MEGAsync/xUbuntu_18.04/amd64/nautilus-megasync-xUbuntu_18.04_amd64.deb
+
+    # TODO: explore command line options
+  
