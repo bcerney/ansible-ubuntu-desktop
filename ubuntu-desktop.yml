@@ -9,7 +9,7 @@
         # - { role: cleanup}
         - common
         # - { role: dotfiles}
-        # - { role: ssh}
+        - { role: ssh }
         # Development
         # - { role: git}
         - { role: ide }
