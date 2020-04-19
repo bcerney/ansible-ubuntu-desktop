@@ -11,9 +11,9 @@
         # - { role: dotfiles}
         - { role: ssh }
         # Development
-        # - { role: git}
+        - { role: git }
         - { role: ide }
-          # - { role: docker }
+        # - { role: docker }
         # - { role: python}
         # - { role: java}
         # Cloud Storage

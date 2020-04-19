@@ -1,0 +1,22 @@
+
+---
+
+    # - name: Generate ssh keys
+    #   openssh_keypair:
+    #     path: /home/bgdgbc/.ssh/id_rsa
+    # TODO: explore command line options
+
+    - name: Upload SSH key to GitHub
+    - github_deploy_key:
+        owner: "bcerney"
+        repo: "{{ item }}"
+        # TODO: env based, hostname in place of hardcode?
+        name: "bgdgbc-github-key"
+        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+        # read_only: yes
+        username: "bcerney"
+        password: "{{ var.github_password }}"
+      with_items:
+        - "bcerney.github.io"
+      # "{{ var.git_repos_bcerney}}"
+  
